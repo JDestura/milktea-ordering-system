@@ -2,12 +2,16 @@
 
 include "../config.php";
 
-if(isset($_GET['id']) && isset($_GET['status'])){
+if(isset($_GET['group']) && isset($_GET['status'])){
 
-$id = intval($_GET['id']);
+$group = $_GET['group'];
 $status = $_GET['status'];
 
-$conn->query("UPDATE orders SET status='$status' WHERE id=$id");
+/* TOGGLE STATUS */
+$newStatus = ($status == "unverified") ? "verified" : "unverified";
+
+/* UPDATE WHOLE ORDER GROUP */
+$conn->query("UPDATE orders SET status='$newStatus' WHERE order_group='$group'");
 
 }
 

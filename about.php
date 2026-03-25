@@ -202,7 +202,7 @@ pointer-events:none;
 <div class="navbar">
 
 <div class="logo">
-D<span></span>nt G<span></span> B<span></span>ba-listic
+D<span></span>nt G<span></span> B<span></span>ba-lastic
 </div>
 
 <div class="nav-links">
@@ -230,7 +230,7 @@ D<span></span>nt G<span></span> B<span></span>ba-listic
 <h1>About Our Milk Tea Shop 🧋</h1>
 
 <p>
-At Dont Go Boba-listic, we believe that every cup of milk tea is more than just a drink — it’s an experience, a comfort, and a moment of happiness in your day. Our shop was created with a simple goal: to bring people together through flavors that feel both exciting and familiar.
+At Dont Go Boba-lastic we believe that every cup of milk tea is more than just a drink, it's an experience, a comfort, and a moment of happiness in your day. Our shop was created with a simple goal: to bring people together through flavors that feel both exciting and familiar.
 </p>
 
 <p>
