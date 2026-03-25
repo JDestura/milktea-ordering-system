@@ -3,7 +3,6 @@ session_start();
 include "config.php";
 
 if(isset($_POST['login'])){
-
 $username=$_POST['username'];
 $password=$_POST['password'];
 
@@ -11,7 +10,6 @@ $sql="SELECT * FROM users WHERE username='$username' AND password='$password'";
 $result=$conn->query($sql);
 
 if($result->num_rows>0){
-
 $user=$result->fetch_assoc();
 
 $_SESSION['user_id']=$user['id'];
@@ -26,7 +24,6 @@ header("Location: about.php");
 }else{
 $error="Invalid login";
 }
-
 }
 ?>
 
@@ -46,6 +43,31 @@ justify-content:center;
 align-items:center;
 }
 
+/* INTRO */
+#intro{
+position:fixed;
+width:100%;
+height:100vh;
+background:#5c3d2e;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:2000;
+transition:.5s;
+}
+
+.intro-text{
+color:white;
+font-size:2.2rem;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 1.5s ease forwards;
+}
+
+@keyframes fadeUp{
+to{opacity:1; transform:translateY(0);}
+}
+
 .box{
 background:white;
 padding:40px;
@@ -58,13 +80,10 @@ text-align:center;
 .logo{
 font-size:36px;
 font-weight:800;
-
 background:linear-gradient(270deg,#8b5a2b,#d2b48c,#8b5a2b);
 background-size:600% 600%;
-
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-
 animation:titleFlow 6s infinite;
 }
 
@@ -95,28 +114,36 @@ color:white;
 .error{color:red;margin-top:10px;}
 
 </style>
-
 </head>
 
 <body>
 
-<div class="box">
+<div id="intro">
+<h1 class="intro-text">Welcome Back 🧋</h1>
+</div>
 
+<div class="box">
 <div class="logo">Dont Go Boba-listic 🧋</div>
 
 <form method="POST">
-
 <input name="username" placeholder="Username" required>
-
 <input type="password" name="password" placeholder="Password" required>
-
 <button name="login">Login</button>
-
 </form>
 
 <?php if(isset($error)){ echo "<div class='error'>$error</div>"; } ?>
-
 </div>
+
+<script>
+window.addEventListener("load",()=>{
+setTimeout(()=>{
+document.getElementById("intro").style.opacity="0";
+setTimeout(()=>{
+document.getElementById("intro").style.display="none";
+},500);
+},2000);
+});
+</script>
 
 </body>
 </html>

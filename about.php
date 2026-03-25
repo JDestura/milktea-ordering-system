@@ -29,49 +29,98 @@ padding:40px;
 overflow-x:hidden;
 }
 
-/* HEADER */
+/* HEADER (same navbar style as index) */
 
-header{
+.navbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
+background:#6f4e37;
+padding:15px 40px;
+border-radius:20px;
+color:white;
 margin-bottom:40px;
 }
 
 .logo{
-font-size:42px;
+font-size:26px;
 font-weight:800;
-background:linear-gradient(270deg,#8b5a2b,#d2b48c,#8b5a2b);
-background-size:600% 600%;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:titleFlow 6s ease infinite, float 3s ease-in-out infinite;
 }
 
-@keyframes titleFlow{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
+.logo span{
+width:18px;
+height:18px;
+background:#f4b400;
+border-radius:50%;
+display:inline-block;
+margin:0 2px;
+position:relative;
+top:2px;
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-6px)}
+.logo span::after{
+content:'';
+width:6px;
+height:6px;
+background:#6f4e37;
+border-radius:50%;
+position:absolute;
+top:6px;
+left:6px;
 }
 
-.logout{
-text-decoration:none;
-background:#8b5a2b;
+.nav-links a{
 color:white;
-padding:10px 20px;
-border-radius:25px;
-margin-left:10px;
+text-decoration:none;
+margin:0 10px;
+padding:6px 12px;
+border-radius:20px;
 }
 
-/* ABOUT CARD */
+.nav-links a.active{
+background:#f4b400;
+}
+
+.nav-right{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.user-menu{
+position:relative;
+cursor:pointer;
+}
+
+.dropdown{
+display:none;
+position:absolute;
+top:35px;
+right:0;
+background:white;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.dropdown a{
+display:block;
+padding:10px 20px;
+text-decoration:none;
+color:#333;
+}
+
+.dropdown.show{
+display:block;
+}
+
+/* ABOUT SECTION */
 
 .about-container{
-max-width:900px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:40px;
+max-width:1100px;
 margin:auto;
 background:#fffaf3;
 border-radius:25px;
@@ -80,19 +129,38 @@ box-shadow:0 20px 45px rgba(0,0,0,.2);
 animation:fadeUp 1s ease;
 }
 
-.about-container h1{
-color:#6f4518;
-margin-bottom:20px;
-font-size:36px;
+/* TEXT SIDE */
+.about-text{
+flex:1;
 }
 
-.about-container p{
-font-size:18px;
-line-height:1.6;
+.about-text h1{
+color:#6f4518;
+margin-bottom:20px;
+font-size:38px;
+}
+
+.about-text p{
+font-size:17px;
+line-height:1.7;
 margin-bottom:15px;
 color:#444;
 }
 
+/* IMAGE SIDE (FIXED SIZE — NOT TOO BIG) */
+.about-image{
+flex:1;
+display:flex;
+justify-content:center;
+}
+
+.about-image img{
+width:320px;   /* smaller size */
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+/* ANIMATION */
 @keyframes fadeUp{
 from{
 opacity:0;
@@ -102,34 +170,6 @@ to{
 opacity:1;
 transform:translateY(0);
 }
-}
-
-/* FEATURE CARDS */
-
-.features{
-margin-top:30px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.feature{
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 12px 30px rgba(0,0,0,.2);
-text-align:center;
-transition:.3s;
-}
-
-.feature:hover{
-transform:translateY(-8px) scale(1.05);
-box-shadow:0 20px 40px rgba(139,90,43,.4);
-}
-
-.feature h3{
-color:#8b5a2b;
-margin-bottom:10px;
 }
 
 /* FLOATING BOBA */
@@ -157,77 +197,80 @@ pointer-events:none;
 
 <body>
 
-<header>
+<!-- NAVBAR -->
 
-<div class="logo">Dont Go Boba-listic 🧋</div>
+<div class="navbar">
 
-<div>
-<a class="logout" href="index.php">Shop</a>
-<a class="logout" href="logout.php">Logout</a>
+<div class="logo">
+D<span></span>nt G<span></span> B<span></span>ba-listic
 </div>
 
-</header>
+<div class="nav-links">
+<a href="index.php">Shop</a>
+<a class="active" href="about.php">About</a>
+</div>
+
+<div class="nav-right">
+<div class="user-menu">
+<span onclick="toggleUserMenu()">👤</span>
+<div id="userDropdown" class="dropdown">
+<a href="logout.php">Logout</a>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ABOUT CONTENT -->
 
 <div class="about-container">
+
+<div class="about-text">
 
 <h1>About Our Milk Tea Shop 🧋</h1>
 
 <p>
-Dont Go Boba-listic was created to bring the best milk tea experience to every customer.
-We believe that milk tea is not just a drink — it's a moment of happiness.
+At Dont Go Boba-listic, we believe that every cup of milk tea is more than just a drink — it’s an experience, a comfort, and a moment of happiness in your day. Our shop was created with a simple goal: to bring people together through flavors that feel both exciting and familiar.
 </p>
 
 <p>
-Every cup we serve is crafted with premium tea leaves, fresh milk,
-and high-quality toppings. Our drinks are fully customizable,
-so every customer can create their perfect milk tea.
+We carefully select premium tea leaves, fresh milk, and high-quality ingredients to ensure that every sip delivers a rich and satisfying taste. From the first pour to the final seal, each drink is crafted with attention to detail, consistency, and passion for quality.
 </p>
 
 <p>
-From classic flavors to modern creations, we aim to deliver
-a refreshing and memorable experience in every sip.
+What makes us special is the freedom we give our customers to personalize their drinks. Whether you prefer less sugar, extra ice, or a perfect balance of both, we make sure your milk tea matches your taste exactly the way you like it.
 </p>
 
-<div class="features">
+<p>
+Beyond serving beverages, we aim to create a welcoming space where friends bond, conversations flow, and everyday moments become memorable. Whether you're stopping by for a quick refreshment or treating yourself after a long day, Dont Go Boba-listic is here to make every visit feel special.
+</p>
 
-<div class="feature">
-<h3>Premium Ingredients</h3>
-<p>We only use high quality tea, milk, and toppings.</p>
+<p>
+Because for us, milk tea isn’t just a trend — it’s a lifestyle, a passion, and a little cup of happiness we’re proud to share with you.
+</p>
+
 </div>
 
-<div class="feature">
-<h3>Customizable Drinks</h3>
-<p>Choose your sugar level, ice level, and toppings.</p>
-</div>
-
-<div class="feature">
-<h3>Freshly Made</h3>
-<p>Every drink is prepared fresh when you order.</p>
-</div>
-
-<div class="feature">
-<h3>Milk Tea Lovers</h3>
-<p>Made by milk tea lovers for milk tea lovers.</p>
-</div>
-
+<div class="about-image">
+<img src="images/don_t_go_boba_listic.png" alt="Milk Tea">
 </div>
 
 </div>
 
 <script>
 
+/* USER MENU */
+function toggleUserMenu(){
+document.getElementById("userDropdown").classList.toggle("show")
+}
+
 /* FLOATING BOBA */
-
 for(let i=0;i<15;i++){
-
 let b=document.createElement("div")
 b.className="boba"
-
 b.style.left=Math.random()*100+"vw"
 b.style.animationDuration=(8+Math.random()*6)+"s"
-
 document.body.appendChild(b)
-
 }
 
 </script>
