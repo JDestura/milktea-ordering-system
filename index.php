@@ -137,7 +137,7 @@ box-shadow:0 15px 35px rgba(0,0,0,.3);
 <div class="navbar">
 
 <div class="logo">
-D<span></span>nt G<span></span> B<span></span>ba-lastic
+D<span></span>nt G<span></span> B<span></span>ba-listic
 </div>
 
 <div class="nav-links">

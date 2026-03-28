@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+}
 include "../config.php";
 ?>
 
@@ -18,7 +20,7 @@ include "../config.php";
 
 <div class="sidebar">
 
-<h2>Don't Go Boba-Lastic🧋</h2>
+<h2>Don't Go Boba-Lastic 🧋</h2>
 
 <a href="dashboard.php">Dashboard</a>
 <a href="products.php">Products</a>
